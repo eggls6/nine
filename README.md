@@ -6,13 +6,14 @@ Numerical Integrators for N-body problems written by S.Eggl
                                                                                          
 ## REFERENCE PUBLICATION:                                                                            
 
-   2010  Eggl,S. & Dvorak, R.                                                              
+   Eggl,S. & Dvorak, R. (2010)                                                             
    An Introduction to Common Numerical Integration Codes Used in Dynamical Astronomy       
    Lecture Notes in Physics, Volume 790, p. 431-477                                          
 
 ## CHANGE LOG:
 
 changes since NINE 1.9
+
 Migrated to Github
 Input file format changed  
 Yarkovsky integrators deprecated                                                                                                                                                                 
@@ -89,8 +90,8 @@ Relativistic (EIH) GAUSS RADAU with adaptive stepsize control
 
 
 ## REQUIREMENTS: 
-		fortran 90 compiler (best: gfortran, no guarantees for ifort, though should work if later than version 11.0)
-		make 
+Fortran 90 compiler (best: gfortran, no guarantees for ifort, though should work if later than version 11.0)
+make 
 
 ## INSTALLATION:
 
