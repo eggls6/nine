@@ -1,0 +1,56 @@
+4                                                                    ....id number of integrator (see end of file)
+0.d0 1.d6  10.d0                                              ...starttime/ end time / output times [days]
+.1d0                                                               ...stepsize for Candy and ordercontrolled Lie Series [days]
+2                                                                   ...number of bodies in this file (without counting bodies in planetoid rings)
+1.d-13                                                          ...error mark (Lie Series: eps = local error)
+b                                                                   ...coordinates during integration: barycentric only -> b)
+he                                                                  ...Inputformat (input format: rv-vectors: (rv), heliocentric Keplerian elements: (he), binary center of mass  Keplerian elements (be), trojan elements (te))
+1.d-10                                                          ...minimum stepsize [days * Gaussian Gravitational Constant]
+1000.d0 .false. .false.                                     ...Cutoff-radius [AU] / cutoff <= 0.d0  means no cuttoff / stop integration when massive /massless particle is beyond cutoff, or ecc >=1? (.true./.false. .true./false.)  
+.false. 0.1d0 1.d-6                                         ......Close Encounter output file? (.true./.false.) / miminum pair distance for output[AU] / limiting mass [Msun] for fixed close encounter radius - above Hills radius is used, below the given minimum pair distance is used 
+no  1.d-10  2.d0                                            ...Merging? (yes/no),   minimum merging radius [AU], maximum merging radius [AU]
+6.4d-11                                                          ...limit mass for mutual planetesimal interaction [Msun] (NICE Model)
+.true.                                                              ... show progress in terminal? (.true./.false.)
+bco hel                                                           ...Outputfiles(en=energy conservation/hel=heliocentric elements/hco=heliocentric coordinates/bco= barycentric coordinates/bbc=barycentric coordinates binary format/bhe=heliocentric elements binary output/bel... binary star center of mass elements)
+no                                                                  ... Planetoid rings? (yes/no)    
+######### BELOW HERE ARE INITIAL CONDITIONS (DO NOT DELETE THIS LINE) #####################       
+0.d0    0.d0    0.d0    0.d0    0.d0    0.d0    1.d0       SUN
+3.870991633370280E-01  2.056258431902921E-01   17.004337081960715E+00        29.12703035d0   48.33076593d0   174.7925272d0   1.66014d-07               MERCURY   
+0.72333566d0       0.00677672d0         13.39467605d0      54.92262463d0      76.67984255d0      50.37663232d0          2.44784d-06                               VENUS
+1.00000261d0       0.01671123d0         9.9998469d0     102.9376819d0      0.d0               357.5268897d0          3.04043d-06                                  EARTH
+1.52371034d0       0.0933941d0          11.84969142d0      286.4968315d0      49.55953891d0      19.39019754d0          3.22715d-07                               MARS
+2.361216409307931  0.08831248000279091  17.134607566067907 149.8819366418631  103.9042573109845   56.40271259131772     1.30223d-010                                  VESTA
+2.766546552699989  0.07856342896364325  20.58594903269137 72.44748128589104  103.9042573109845  56.40271259131772      4.85511d-010                                CERES
+2.771148780524000  2.312416131275238E-01 4.484160205303885E+01 3.100633578045536E+02 1.731264410507463E+02 1.817013971751452E+02  1.06083d-10                          PALLAS
+5.202887d0         0.04838624d0         11.30439695d0      274.2545707d0      100.4739091d0      19.66796068d0          0.000954792d0                                    JUPITER
+9.53667594d0       0.05386179d0         12.48599187d0      338.9364538d0      113.6624245d0      317.3553659d0          0.000285886d0                                  SATURN
+19.18916464d0      0.04725744d0         10.77263783d0      96.93735127d0       74.01692503d0     142.2838282d0          4.36624d-05                                    URANUS
+30.06992276d0      0.00859048d0         11.77004347d0      273.1805365d0      131.7842257d0      259.915208d0           5.15139d-05                                     NEPTUNE
+
+!!! ALL INCLINATIONS +10 deg!!!!!
+
+####################################################################### DESCRIPTION OF INITIAL CONDITION INPUT #################
+format heliocentric Keplerian elements:
+semi-major axis (a) [au] eccentricity (e) [] inclination (i) [deg]  argument of perihelion (omega) [deg]  argument of the ascending node (Omega) [deg]  mean anomaly (M) [deg]  mass [Solar masses] name[string]
+
+format position and velocity vectors:
+rx   ry   rz    vx    vy    vz     mass (Solar masses) name[string]
+
+format binary center of mass Keplerian elements: 
+same as Keplerian elements, but the binary constituents have to be the first two input lines 
+
+format trojan Keplerian elements:
+semi-major axis (a) [au] eccentricity (e) [] inclination (i) [deg]  argument of perihelion (omega) [deg]  argument of the ascending node (Omega) [deg]  mean anomaly (M) [deg]  mass [Solar masses] integer id of body of which the current body should be trojan to (e.g. 2), default value should be 0 for non Trojan bodies
+
+
+Integrators:
+
+
+0.....Candy (symplectic, 4th order, fixed stepsize)
+1.....Yoshida (symplectic, 8th order, fixed stepsize)
+2.....standard Lie series Integrator with adaptive stepsize control (LieSW)
+3... Bulirsch Stoer with adaptive stepsize(Mercury6)
+4... Gauss Radau 15 with adaptive stepsize (Mercury6)
+5... relativistic (heliocentric spheric metric) Gauss Radau 15 with adaptive stepsize 
+6... relativistic (EIH N-Body) Gauss Radau 15 with adaptive stepsize 
+
